@@ -1,0 +1,101 @@
+{
+  "paths":{
+    "/api/create-product":{
+      "x-swagger-router-controller":"ProductController",
+      "post":{
+        "summary":"Додати товар на склад",
+        "operationId": "createProduct",
+        "tags": [
+          "Product API"
+        ],
+        "parameters":[
+        {
+          "in": "body",
+          "name": "body",
+          "description": "ProductBody",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/ProductBody"
+          }
+        }],
+          "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/get-product":{
+     "x-swagger-router-controller":"ProductController" ,
+      "get":{
+        "summary":"Товари на складі",
+        "operationId": "getProducts",
+        "tags":[
+          "Product API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/get-all-products":{
+      "x-swagger-router-controller":"ProductController",
+      "get":{
+        "summary": "Усі товари",
+        "operationId": "getListProducts",
+        "tags":[
+          "Product API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductBody"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ProductBody": {
+      "properties": {
+        "name":{
+          "type":"string"
+        },
+        "price":{
+          "type":"number"
+        },
+        "xSize":{
+          "type":"string"
+        },
+        "obhvatTalii" : {
+          "type" : "string"
+        },
+        "length": {
+          "type": "string"
+        },
+        "photo": {
+          "type": "string"
+        },
+        "categoryId":{
+          "type":"string"
+        }
+      }
+    }
+  }
+}

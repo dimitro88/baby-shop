@@ -1,0 +1,51 @@
+{
+  "paths": {
+    "/api/order": {
+      "x-swagger-router-controller": "OrderController",
+      "post": {
+        "summary": "Нове замовлення",
+        "tags": [
+          "Order API"
+        ],
+        "operationId": "addOrder",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "OrderBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OrderBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "OrderBody": {
+      "properties": {
+        "products":{
+          "items":{
+            "type":"string"
+          },
+          "type":"array"
+        },
+        "totalCost":{
+          "type":"number"
+        }
+      }
+    }
+  }
+}

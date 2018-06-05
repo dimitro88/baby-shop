@@ -1,0 +1,23 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Baby-shop"
+  },
+  "basePath": "/",
+  "consumes":[
+    "application/json"  
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+  },
+  "securityDefinitions": {
+    "token": {
+      "name": "Authorization",
+      "type": "apiKey",
+      "in": "header"
+    }
+  }
+}

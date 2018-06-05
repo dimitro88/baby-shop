@@ -1,0 +1,105 @@
+{
+  "paths": {
+    "/api/create-category": {
+      "x-swagger-router-controller": "CategoryController",
+      "post": {
+        "summary": "Додати нову категорію",
+        "operationId": "createCategory",
+        "tags": [
+          "Category API"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "CategoryBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CategoryBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CategoryBody"
+            }
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/api/get-all-categories/{sex}":{
+      "x-swagger-router-controller":"CategoryController",
+      "get":{
+        "summary": "Усі категорії",
+        "operationId": "getListCategories",
+        "tags":[
+          "Category API"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "in": "path",
+            "name": "sex",
+            "description": "sex",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CategoryBody"
+            }
+          }
+        }
+      }
+    },
+    "/api/category/{category_id}":{
+      "x-swagger-router-controller": "CategoryController",
+      "get":{
+        "summary":"Оглянути категорію",
+        "tags":[
+          "Category API"
+        ],
+        "operationId":"getCategoryById",
+        "parameters":[{
+          "type": "string",
+          "name": "category_id",
+          "in": "path",
+          "description": "category_id",
+          "required": true
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CategoryBody"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CategoryBody": {
+      "properties": {
+        "name":{
+          "type":"string"
+        },
+        "photo":{
+          "type":"string"
+        },
+        "sexType":{
+          "type":"string"
+        }
+      }
+    }
+  }
+}
